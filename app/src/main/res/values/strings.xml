@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Shopping List</string>
+    <string name="app_name">Shopping List App</string>
+    <string-array name="shopping_items">
+        <item>Eggs</item>
+        <item>Milk</item>
+        <item>Bacon</item>
+        <item>Charger</item>
+        <item>Toothpaste</item>
+        <item>Cookies</item>
+        <item>Hairbrush</item>
+        <item>Earbuds</item>
+        <item>Potato Chips</item>
+    </string-array>
 </resources>
