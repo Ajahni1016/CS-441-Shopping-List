@@ -9,15 +9,38 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
-    String data[];
+    ArrayList<String> data;
     Context context;
+    int isEmpty;
 
-    public CustomAdapter(Context ct, String items[]){
+    public CustomAdapter(Context ct, ArrayList<String> items){
         context = ct;
         data = items;
+        isEmpty = 1; //Change to 0 when i enable the add button
     }
+
+//    public void addItem(String[] listOfItems, String s){ //To add a value to the list
+//        if(isEmpty==1) { // If a value has already been added to the list
+//            String[] newList = new String[listOfItems.length + 1];
+//            int index = 0;
+//            for (String i : listOfItems) {
+//                newList[index] = i; // Duplicating the original list
+//                index++;
+//            }
+//            newList[index] = s; // Inserting the new string
+//            this.notifyItemInserted(data.length - 1); //Notifying the adapter that an item as been added
+//        }
+//
+//        else{ //If the list is empty, replace the "Your list is empty" message with the new item
+//            isEmpty = 0; // Once an item has been added, it's no longer empty
+//            // Not yet implemented
+//        }
+//
+//    }
 
     @NonNull
     @Override
@@ -31,12 +54,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int position) {
-        viewHolder.itemText.setText(data[position]);
+        viewHolder.itemText.setText(data.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return data.size();
 
     }
 
