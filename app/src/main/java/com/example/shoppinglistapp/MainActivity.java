@@ -1,15 +1,17 @@
 package com.example.shoppinglistapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> items; //Used to store the inputted items for the list
     String[] strings;
     CustomAdapter customAdapter;
+    EditText textInput;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +31,20 @@ public class MainActivity extends AppCompatActivity {
         strings = getResources().getStringArray(R.array.shopping_items);
         items = new ArrayList<>();
 
-        for(String s:strings){
-            items.add(s);
-        }
+        //Setting up text input
+        textInput = findViewById(R.id.textInput);
+        TextView.OnEditorActionListener exampleListener = new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView exampleView, int actionId, KeyEvent event) {
+                if((event != null && (event.getKeyCode()==KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE && event.getAction() == KeyEvent.ACTION_DOWN) || (actionId == EditorInfo.IME_ACTION_SEND && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                    addItem(textInput.getText().toString()); //It does this twice for some reason
+                    recyclerView.scrollToPosition(0);
+                }
+                return true;
+            }
+        };
+        textInput.setOnEditorActionListener(exampleListener);
+
+        Collections.addAll(items, strings);
 
         customAdapter = new CustomAdapter(this, items);
         recyclerView.setAdapter(customAdapter);
@@ -38,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addItem(String s){ //To add a value to the list
-        items.add(s); // Inserting the new string
-        customAdapter.notifyItemInserted(items.size() - 1); //Notifying the adapter that an item as been added
+        items.add(0,s); // Inserting the new string
+        customAdapter.notifyItemInserted(0); //Notifying the adapter that an item as been added
     }
+
+
+
 
 }
 
