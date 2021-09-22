@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         textInput = findViewById(R.id.textInput);
         TextView.OnEditorActionListener exampleListener = new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView exampleView, int actionId, KeyEvent event) {
-                if((event != null && (event.getKeyCode()==KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE && event.getAction() == KeyEvent.ACTION_DOWN) || (actionId == EditorInfo.IME_ACTION_SEND && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                    addItem(textInput.getText().toString()); //It does this twice for some reason
+                if((event != null && (event.getKeyCode()==KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) || (actionId == EditorInfo.IME_ACTION_DONE && event.getAction() == KeyEvent.ACTION_DOWN) || (actionId == EditorInfo.IME_ACTION_SEND && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                    addItem(textInput.getText().toString());
                     recyclerView.scrollToPosition(0);
                 }
                 return true;
