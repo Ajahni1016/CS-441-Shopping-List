@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private void addItem(String s){ //To add a value to the list
         items.add(0,s); // Inserting the new string
         customAdapter.notifyItemInserted(0); //Notifying the adapter that an item as been added
+        textInput.getText().clear(); // Empties text box when enter is pressed
     }
 
 
