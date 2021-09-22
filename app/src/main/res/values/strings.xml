@@ -11,5 +11,17 @@
         <item>Earbuds</item>
         <item>Potato Chips</item>
     </string-array>
+
+    <string-array name="time_added">
+        <item>9/21/21 8:15 PM</item>
+        <item>9/17/21 8:02 PM</item>
+        <item>9/14/21 5:15 AM</item>
+        <item>9/13/21 10:01 AM</item>
+        <item>9/10/21 2:44 PM</item>
+        <item>9/3/21 8:15 AM</item>
+        <item>9/3/21 9:19 PM</item>
+        <item>8/31/21 12:07 PM</item>
+        <item>8/17/21 7:33 PM</item>
+    </string-array>
 </resources>
 

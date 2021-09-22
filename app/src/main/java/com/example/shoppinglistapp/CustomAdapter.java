@@ -14,12 +14,14 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     ArrayList<String> data;
+    ArrayList<String> times;
     Context context;
     int isEmpty;
 
-    public CustomAdapter(Context ct, ArrayList<String> items){
+    public CustomAdapter(Context ct, ArrayList<String> items, ArrayList<String> times){
         context = ct;
         data = items;
+        this.times = times;
         isEmpty = 1; //Change to 0 when i enable the add button
     }
 
@@ -55,6 +57,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder, int position) {
         viewHolder.itemText.setText(data.get(position));
+        viewHolder.timeText.setText(times.get(position));
     }
 
     @Override
@@ -66,10 +69,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView itemText;
+        TextView timeText;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             itemText = itemView.findViewById(R.id.itemsText);
+            timeText = itemView.findViewById(R.id.timesText);
         }
     }
+
+
+
 }
