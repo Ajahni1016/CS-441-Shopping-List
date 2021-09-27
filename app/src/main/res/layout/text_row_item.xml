@@ -26,7 +26,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:button="?android:attr/listChoiceIndicatorSingle"
-                android:onClick="checkItem"
                 android:scaleX="2"
                 android:scaleY="2"
                 app:buttonTint="@color/white"
@@ -69,4 +68,5 @@
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

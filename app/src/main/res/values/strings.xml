@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Shopping List App</string>
+    <string name="plus_button" />
     <string-array name="shopping_items">
         <item>Eggs</item>
         <item>Milk</item>

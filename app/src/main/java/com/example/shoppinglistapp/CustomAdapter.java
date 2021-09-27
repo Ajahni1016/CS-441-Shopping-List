@@ -66,6 +66,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     }
 
+
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView itemText;
@@ -76,6 +78,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             itemText = itemView.findViewById(R.id.itemsText);
             timeText = itemView.findViewById(R.id.timesText);
         }
+    }
+
+    void delItem(int i) { //To add a value to the list
+        data.remove(i);
+        this.notifyDataSetChanged();
     }
 
 

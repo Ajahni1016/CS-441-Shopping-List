@@ -1,6 +1,7 @@
 package com.example.shoppinglistapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         };
         textInput.setOnEditorActionListener(exampleListener);
 
+
+
         //Setting up text to go into list
         items = new ArrayList<>();
         times = new ArrayList<>();
@@ -65,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         customAdapter = new CustomAdapter(this, items, times);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        addItem("New Item");
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDelete(customAdapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     private void addItem(String s){ //To add a value to the list
@@ -78,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
         textInput.getText().clear(); // Empties text box when enter is pressed
     }
 
-    public void checkItem(View view){
-//        itemCard.setCardBackgroundColor(0xFFE1E6EA);
-    }
 
 
 }
